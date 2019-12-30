@@ -1,5 +1,6 @@
-import { hooks } from './hooks.js';
+import { Hooks } from './hooks.js';
 
+const hooks = new Hooks();
 window.hooks = hooks;
 
 function log(message) {
@@ -7,21 +8,22 @@ function log(message) {
     p.innerHTML += message + '<br/>';
 }
 
-hooks.add_sequence(['q', 'w', 'e', 'r', 't', 'y'], () => {
+hooks.add_sequence(['KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY'], () => {
     log('Open the secret door');
 });
 
-hooks.add_sequence(['q', 'w', 'e'], () => {
+hooks.add_sequence(['KeyQ', 'KeyW', 'KeyE'], () => {
     log('You\'ve reached a fork in the road');
 });
 
-hooks.add_sequence(['q', 'w', 'e', 'f'], () => {
+hooks.add_sequence(['KeyQ', 'KeyW', 'KeyE', 'KeyF'], () => {
     log('You went the wrong way!');
 });
 
-hooks.add_sequence(['y', 't', 'r', 'e', 'w', 'q'], () => {
-    log('Open the secret door');
+hooks.add_sequence(['KeyY', 'KeyT', 'KeyR', 'KeyE', 'KeyW', 'KeyQ'], () => {
+    log('Open the super secret door');
 });
 
 hooks.add_reset_sequence(['Escape']);
 
+hooks.listen();
