@@ -65,9 +65,9 @@ export class Hooks {
         });
 
         elem.addEventListener('keyup', (e) => {
-            this.on_key_released(e);
             this.pressed_keys.delete(e.key);
             this.pressed_codes.delete(e.code);
+            this.on_key_released(e);
         });
     }
 
